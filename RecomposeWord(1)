@@ -1,0 +1,69 @@
+// recomposing word from CiytOfIce -> City Of Ice
+public class Recompose{
+    public static String recompose(String str){ 
+        ArrayList<String> List = new ArrayList<String>();
+        int[] arr = {0};
+
+        while(arr[0] < str.length())
+        List.add(Ad(str, arr, str.length()));
+
+        String re = "";
+        for(String i: List){
+            String n = "";
+            for(int j = 0; j < i.length(); j++)
+            {
+                char c = i.charAt(j);
+                n = c + n;
+            }
+
+            re = re + n;
+        }
+       
+        return re.charAt(0) + re.substring(1,re.length()).replaceAll("([A-Z])", " $1");
+    }
+
+    public static String Ad(String str, int[] arr, int length){
+        int start = arr[0];
+
+        if(Isvowel(str.charAt(arr[0])))
+        {
+            arr[0]++;
+            if(arr[0] == length)
+            return str.substring(start, arr[0]);
+
+            while(Isvowel(str.charAt(arr[0]))){
+                arr[0]++;
+                if(arr[0] == length)
+                return str.substring(start, arr[0]);
+            }
+            
+            return str.substring(start, arr[0]);
+        }
+        else
+        {
+            arr[0]++;
+            if(arr[0] == length)
+            return str.substring(start, arr[0]);
+
+            while(!Isvowel(str.charAt(arr[0]))){
+                arr[0]++;   
+                if(arr[0] == length)
+                return str.substring(start, arr[0]);
+            }
+
+            return str.substring(start, arr[0]);
+        }
+
+
+    }
+
+    public static boolean Isvowel(char letter)
+    {
+        if(letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u' || letter == 'A'|| letter == 'E'|| letter == 'I' || letter == 'O' || letter == 'U')
+        return true;
+        else return false;
+
+    }
+
+
+}
