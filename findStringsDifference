@@ -1,0 +1,15 @@
+    public static char findDifference(String s, String t) 
+    {
+        while(s.length()!=0)
+        {
+            if(t.contains((""+s.charAt(0))))
+            {
+                t = t.replaceFirst((""+s.charAt(0)), "");
+                s = s.replaceFirst((""+s.charAt(0)),"");
+            }
+
+        }
+
+        return t.charAt(0);
+
+    }
