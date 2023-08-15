@@ -1,0 +1,27 @@
+import java.util.*;
+
+public static String expandedForm(double n) 
+    {
+        int Decimal = (int)n;
+        String D = (""+Decimal);
+        int pointLength = (""+n).replaceFirst(D,"").replace(".", "").length();
+        ArrayList<String> List = new ArrayList<String>();
+
+        for(int i = 0 ; i < D.length(); i++)
+        {
+            if(D.charAt(i)=='0')
+            continue;
+            List.add(""+(Character.getNumericValue(D.charAt(i))*(int)(Math.pow(10,D.length()-1-i)))); 
+        }
+            String p = (""+n).replace(".", "").replaceFirst(D, "");
+
+        for(int i =0; i<pointLength; i++)
+        {   
+            if(p.charAt(i)=='0')
+            continue;
+            List.add(""+p.charAt(i)+"/"+((int)Math.pow(10,1+i)));
+            
+        }
+        
+        return String.join(" + ", List);
+    }
