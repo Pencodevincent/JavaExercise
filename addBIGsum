@@ -1,0 +1,40 @@
+        public static String addBIGsum(String num1, String num2){
+        if(check(num1) || check(num2))
+        return "invalid";
+
+        if(num1.isEmpty())
+            num1 = "0";
+        if(num2.isEmpty())
+            num2 = "0";
+
+        int i = num1.length();
+        int j = num2.length();
+        int k = Math.max(i,j)+1;
+        char[] c = new char[k];
+
+        for(int digit = 0; k > 0; digit/=10)
+        {
+            if(i > 0)
+            digit = digit + num1.charAt(--i) - '0';
+            if(j > 0)
+            digit = digit + num2.charAt(--j) - '0';
+
+            c[--k] = (char)('0'+digit%10);
+        }
+        for(k = 0; k < c.length-1 && c[k] == '0' ; k++){}
+        return new String(c, k, c.length-k);
+    
+        }
+
+        public static boolean check(String s){
+
+        for(int i = 0; i < s.length(); i++)
+        {
+            if(!(s.charAt(i) >= '0' && s.charAt(i) <= '9'))
+            return true;  
+
+        }
+
+        return false;
+
+        }
