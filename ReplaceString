@@ -1,0 +1,17 @@
+    public static String rep(String s, String change, String subject)
+    {
+
+        for(int i =0; i+s.length() <=subject.length(); i++)
+        {
+            String sub = subject.substring(i, i+s.length());
+            if(sub.equals(s)){
+
+            subject = subject.substring(0,i)+change+subject.substring(i+s.length(), subject.length());
+            }
+
+
+        }
+
+
+        return subject;
+    }
