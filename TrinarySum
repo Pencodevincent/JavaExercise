@@ -1,0 +1,53 @@
+//Constructor class
+public class Trinary{
+    String s ="";
+
+    Trinary(int num) 
+    {
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+
+        for(int digit; num > 0; digit/=3)
+        {
+            digit = num %3;
+            arr.add(digit);
+            num /= 3;
+        }
+        for(int i : arr)
+        {
+            s= (""+i)+s;
+        }
+
+    }
+
+    String Get(){
+        return s;
+    }
+
+    void showMe(){
+        System.out.println(s);
+    }
+
+
+}
+
+//Sum method
+    public static String Sum(String num1, String num2)
+    {
+        int a = num1.length();
+        int b = num2.length();
+        int k = num1.length()+num2.length()+1;
+        char[] c = new char[k];
+
+        for(int digit = 0; k > 0 ; digit /=3)
+        {
+            if(a>0)
+            digit += num1.charAt(--a) -'0';
+            if(b>0)
+            digit += num2.charAt(--b) - '0';
+            c[--k] = (char)(digit%3 +'0');
+        }
+
+        for(k = 0; c[k] == '0' && k < c.length-1; k++){}
+
+        return new String(c, k, c.length-k);
+    }
