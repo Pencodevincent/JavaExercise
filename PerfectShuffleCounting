@@ -1,0 +1,29 @@
+    public static int shuffleCount(int num){
+        int[] arr = new int[num];
+        for(int i = 0; i<num; i++)
+            arr[i]=i+1;
+
+        int[] original = Arrays.copyOf(arr,arr.length);
+        shuffle(arr);
+        int count = 1;
+
+        while(!Arrays.equals(original, arr))
+        {
+            shuffle(arr);
+            count++;
+        }
+
+        return count;
+
+    }
+
+    public static void shuffle(int[] arr){
+        int[] copy = Arrays.copyOf(arr, arr.length);
+        for(int i = 1, k = 1,j = arr.length/2; i <arr.length-1 ; i+=2,k++,j++)
+        {   
+            int tmp = copy[k];
+            arr[i] = arr[j];
+            arr[i+1] = tmp;
+        } 
+ 
+    }
